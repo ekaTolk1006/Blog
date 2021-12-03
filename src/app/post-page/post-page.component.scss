@@ -1,0 +1,25 @@
+.post{
+    max-width: 600px;
+    margin: 0 auto;
+}
+.header{
+    color:rgb(216, 66, 78);
+}
+.info{
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    padding-bottom: 10px;
+}
+.btn-to-main{
+    background-color:rgb(216, 66, 78);
+    border:none;
+    padding:10px;
+    margin-top:10px;
+    color:white;
+}
+.btn-to-main:hover{
+    color:rgb(216, 66, 78);
+    background-color:white;
+    transition: 1s;
+}
