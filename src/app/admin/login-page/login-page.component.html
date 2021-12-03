@@ -1,1 +1,26 @@
-<p>login-page works!</p>
+<div class="conteiner">
+<form class="card" [formGroup]="form" (ngSubmit) = "submit()">
+    <h1>Enter</h1>
+
+    <div class="form-control"></div>
+    <label for="email">Email</label>
+    <input type="email">
+    <div class="validators" >
+
+
+    </div>
+
+
+
+    <div class='form-control'>
+    <label for="password">Password</label>
+    <input type="password">
+    <div class="validators">
+
+    </div>
+
+</div>
+
+    <button type="submit">log in</button>
+</form>
+</div>
