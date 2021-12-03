@@ -7,7 +7,7 @@ import { LoginPageComponent } from "./login-page/login-page.component";
 import { AdminLayoutComponent } from './shared/components/admin-layout/admin-layout.component';
 import { CreatePageComponent } from './create-page/create-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { PostPageComponent } from "../post-page/post-page.component";
 
@@ -21,6 +21,7 @@ import { PostPageComponent } from "../post-page/post-page.component";
         EditPageComponent],
 
         imports:[
+            
             ReactiveFormsModule,
             FormsModule,
             CommonModule,
