@@ -10,6 +10,8 @@ import { EditPageComponent } from './edit-page/edit-page.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { PostPageComponent } from "../post-page/post-page.component";
+import { AuthGuard } from "./shared/services/auth.guard";
+import { AuthService } from "./shared/services/auth.service";
 
 
 @NgModule({
@@ -31,11 +33,15 @@ import { PostPageComponent } from "../post-page/post-page.component";
                 {path:'post/:id/edit',component: PostPageComponent},
                 {path:'create',component:CreatePageComponent}
             ]}
-            ])
-        
-        ],
+        ])
+    ],
         exports:[
             RouterModule
+        ],
+
+        providers:[
+            AuthGuard,
+            AuthService
         ]
     })
 
