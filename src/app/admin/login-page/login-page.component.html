@@ -7,22 +7,28 @@
     <input type="email" formControlName="email">
     <div class="validation" *ngIf="form.get('email').touched && form.get('email').invalid" >
        <small *ngIf="form.get('email').errors.email">This email is not valid</small>
-       <small **ngIf="form.get('email').errors.required">Enter the password</small>
+       <small *ngIf="form.get('email').errors.required">Enter the email</small>
 
     </div>
     </div>
 <div class='form-control'>
     <label for="password">Password</label>
     <input type="password" formControlName="password">
-    <div class="validation" *ngIf="form.get('password').touched && form.get('password').invalid" >
-        <small>
-            Small password{{form.get('password').errors.minlength.requiredlength}}
+    <div class="validation" *ngIf="form.get('password').touched && form.get('password').invalid">
+
+        <small  *ngIf="form.get('password').errors.required">
+            Enter th password
+        </small>
+        <small *ngIf="form.get('password').errors.minlength">
+            Small password {{form.get('password').errors.minlength.requiredlength}},
+            your password has {{form.get('password').errors.minlength.actualLength}} symbols
+
         </small>
       
     </div>
 
 </div>
 
-    <button type="submit">log in</button>
+    <button type="submit" class="btn btn-primary" [disabled] = "form.invalid">log in</button>
 </form>
 </div>
