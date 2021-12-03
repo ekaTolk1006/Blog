@@ -7,11 +7,12 @@ import { LoginPageComponent } from "./login-page/login-page.component";
 import { AdminLayoutComponent } from './shared/components/admin-layout/admin-layout.component';
 import { CreatePageComponent } from './create-page/create-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
-import { FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { PostPageComponent } from "../post-page/post-page.component";
-import { AuthGuard } from "./shared/services/auth.guard";
-import { AuthService } from "./shared/services/auth.service";
+import { AuthService } from "./shared/components/admin-layout/services/auth.service";
+import { SharedModule } from "./shared/shared.module";
+
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { AuthService } from "./shared/services/auth.service";
         imports:[
             ReactiveFormsModule,
             FormsModule,
+            SharedModule,
             CommonModule,
             RouterModule.forChild([
                 {path:'',component:AdminLayoutComponent, children :[
@@ -36,13 +38,12 @@ import { AuthService } from "./shared/services/auth.service";
         ])
     ],
         exports:[
-            RouterModule
+            RouterModule,
+
+            
         ],
 
-        providers:[
-            AuthGuard,
-            AuthService
-        ]
+        providers:[AuthService]
     })
 
     export class AdminModule{
