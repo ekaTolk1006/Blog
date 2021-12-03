@@ -21,16 +21,16 @@ import { PostPageComponent } from "../post-page/post-page.component";
         EditPageComponent],
 
         imports:[
-            
             ReactiveFormsModule,
             FormsModule,
             CommonModule,
             RouterModule.forChild([
-                {path:'',component:AdminLayoutComponent},
+                {path:'',component:AdminLayoutComponent, children :[
                 {path:'login',component:LoginPageComponent},
                 {path:'dashboard', component:DashboardComponent},
                 {path:'post/:id/edit',component: PostPageComponent},
                 {path:'create',component:CreatePageComponent}
+            ]}
             ])
         
         ],

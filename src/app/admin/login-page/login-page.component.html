@@ -2,21 +2,23 @@
 <form class="card" [formGroup]="form" (ngSubmit) = "submit()">
     <h1>Enter</h1>
 
-    <div class="form-control"></div>
+    <div class="form-control">
     <label for="email">Email</label>
-    <input type="email">
-    <div class="validators" >
-
+    <input type="email" formControlName="email">
+    <div class="validation" *ngIf="form.get('email').touched && form.get('email').invalid" >
+       <small *ngIf="form.get('email').errors.email">This email is not valid</small>
+       <small **ngIf="form.get('email').errors.required">Enter the password</small>
 
     </div>
-
-
-
-    <div class='form-control'>
+    </div>
+<div class='form-control'>
     <label for="password">Password</label>
-    <input type="password">
-    <div class="validators">
-
+    <input type="password" formControlName="password">
+    <div class="validation" *ngIf="form.get('password').touched && form.get('password').invalid" >
+        <small>
+            Small password{{form.get('password').errors.minlength.requiredlength}}
+        </small>
+      
     </div>
 
 </div>
