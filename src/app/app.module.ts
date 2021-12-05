@@ -9,6 +9,7 @@ import { MainLayoutComponent } from './shared/components/main-layout/main-layout
 import { PostComponent } from './shared/components/post/post.component';
 import { SharedModule } from './admin/shared/shared.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,7 @@ import { SharedModule } from './admin/shared/shared.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
