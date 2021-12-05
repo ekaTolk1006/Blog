@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Post } from '../interfaces';
+import { CreatePageService } from '../shared/components/admin-layout/services/create.page.service';
 
 
 @Component({
@@ -6,15 +9,30 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy{
 
-  constructor(
+
+  posts:Post[] = []
+  pSub: Subscription
+  constructor(private CreatePostService:CreatePageService) {
+
+  }
   
-  ) { }
+   
 
-  ngOnInit(): void {
+  ngOnInit() {
+
+    this.pSub = this.CreatePostService.getAll().subscribe((posts) => {
+      this.posts = posts
+    })
   }
 
+  removePostId(id:string){}
 
+ngOnDestroy() {
+  if (this.pSub){
+    this.pSub.unsubscribe()
+  }
+}
   
 }

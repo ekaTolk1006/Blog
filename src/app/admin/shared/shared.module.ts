@@ -2,6 +2,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { NgModule, Provider } from "@angular/core";
 import { QuillModule } from 'ngx-quill'
 import { AuthIntercepter } from "./auth.intercepter";
+import { CommonModule } from "@angular/common";
 
 const INTERCEPTOR_PROVIDER: Provider = { 
     provide: HTTP_INTERCEPTORS,
@@ -14,13 +15,15 @@ const INTERCEPTOR_PROVIDER: Provider = {
 
     imports:[
     HttpClientModule,
-    QuillModule.forRoot()
+    QuillModule.forRoot(),
+    CommonModule
     ],
 
 
     exports:[
         HttpClientModule,
-        QuillModule
+        QuillModule,
+        CommonModule
        ],
        providers: [INTERCEPTOR_PROVIDER]
 })
