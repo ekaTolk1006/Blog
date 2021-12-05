@@ -13,6 +13,7 @@ import { PostPageComponent } from "../post-page/post-page.component";
 import { AuthService } from "./shared/components/admin-layout/services/auth.service";
 import { SharedModule } from "./shared/shared.module";
 import { AuthGuard } from "./shared/components/admin-layout/services/auth.guard";
+import { CreatePageService } from "./shared/components/admin-layout/services/create.page.service";
 
 
 
@@ -44,8 +45,9 @@ import { AuthGuard } from "./shared/components/admin-layout/services/auth.guard"
             
         ],
 
-        providers:[AuthService,
-            AuthGuard]
+        providers:[
+            AuthGuard,
+            CreatePageService]
     })
 
     export class AdminModule{
