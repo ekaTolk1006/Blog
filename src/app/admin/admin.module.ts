@@ -12,6 +12,7 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { PostPageComponent } from "../post-page/post-page.component";
 import { AuthService } from "./shared/components/admin-layout/services/auth.service";
 import { SharedModule } from "./shared/shared.module";
+import { AuthGuard } from "./shared/components/admin-layout/services/auth.guard";
 
 
 
@@ -31,9 +32,9 @@ import { SharedModule } from "./shared/shared.module";
             RouterModule.forChild([
                 {path:'',component:AdminLayoutComponent, children :[
                 {path:'login',component:LoginPageComponent},
-                {path:'dashboard', component:DashboardComponent},
-                {path:'post/:id/edit',component: PostPageComponent},
-                {path:'create',component:CreatePageComponent}
+                {path:'dashboard', component:DashboardComponent, canActivate: [AuthGuard]},
+                {path:'post/:id/edit',component: PostPageComponent, canActivate:[AuthGuard]},
+                {path:'create',component:CreatePageComponent,canActivate:[AuthGuard]}
             ]}
         ])
     ],
@@ -43,7 +44,8 @@ import { SharedModule } from "./shared/shared.module";
             
         ],
 
-        providers:[AuthService]
+        providers:[AuthService,
+            AuthGuard]
     })
 
     export class AdminModule{
