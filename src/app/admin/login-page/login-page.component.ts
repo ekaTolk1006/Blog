@@ -29,6 +29,8 @@ export class LoginPageComponent implements OnInit {
        if(params ['EnterLogin']) {
          this.message = 'Please enter the date'
 
+       }else if(params['authFaild']) {
+         this.message ="session expired, log in please" 
        }
      })
 

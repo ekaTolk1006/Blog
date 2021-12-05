@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Post } from '../interfaces';
+import { CreatePageService } from '../shared/components/admin-layout/services/create.page.service';
 
 @Component({
   selector: 'app-create-page',
@@ -11,7 +12,7 @@ export class CreatePageComponent implements OnInit {
 
   form:FormGroup
 
-  constructor() { }
+  constructor(private bdreques:CreatePageService) { }
 
   ngOnInit(): void {
 
@@ -42,5 +43,10 @@ export class CreatePageComponent implements OnInit {
 
      
    }
+
+   this.bdreques.create(post).subscribe(() => {
+     this.form.reset();
+   })
+   
   }
 }
