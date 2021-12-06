@@ -10,10 +10,10 @@ import { EditPageComponent } from './edit-page/edit-page.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { PostPageComponent } from "../post-page/post-page.component";
-import { AuthService } from "./shared/components/admin-layout/services/auth.service";
 import { SharedModule } from "./shared/shared.module";
 import { AuthGuard } from "./shared/components/admin-layout/services/auth.guard";
 import { CreatePageService } from "./shared/components/admin-layout/services/create.page.service";
+import { SearchPipe } from "./shared/components/search.pipe";
 
 
 
@@ -23,7 +23,8 @@ import { CreatePageService } from "./shared/components/admin-layout/services/cre
         AdminLayoutComponent,
         CreatePageComponent,
         DashboardComponent,
-        EditPageComponent],
+        EditPageComponent,
+        SearchPipe],
 
         imports:[
             ReactiveFormsModule,
