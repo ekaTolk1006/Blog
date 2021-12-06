@@ -53,10 +53,10 @@ uSub: Subscription
     }
     this.submitted = true
 
-    this.createPage.update( {
+    this.uSub = this.createPage.update( {
       ...this.post,
-      text: this.post.text,
-      title: this.post.title,
+      text: this.form.value.text,
+      title: this.form.value.title,
     }).subscribe(() =>{
       this.submitted = false
       this.alert.danger('your post updates!')
