@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit, OnDestroy{
   }
 
   remove(id:string){
-   this.dSub = this.CreatePostService.removeId(id).subscribe(()=>{
+   this.dSub = this.CreatePostService.remove(id).subscribe(()=>{
       this.posts = this.posts.filter( post => post.id !== id)
 
     })

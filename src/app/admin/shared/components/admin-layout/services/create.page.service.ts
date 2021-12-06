@@ -10,10 +10,7 @@ import { environment } from "src/environment/environment";
 })
 
 export class CreatePageService{
-    remove(id: string) {
-      throw new Error('Method not implemented.');
-    }
-
+    
 
     constructor(private http:HttpClient){}
 
@@ -46,7 +43,19 @@ export class CreatePageService{
         }))
     }
 
-    removeId(id: string):Observable<void>{
+    getById(id: string):Observable<Post>{
+      return this.http.get(`${environment.DbKey}/posts/${id}.json`)
+      .pipe(map((post:Post) =>{
+        return {
+            ...post,id,
+            date: new Date(post.date)
+        } 
+
+    }))
+
+    }
+
+    remove(id: string):Observable<void>{
         return this.http.delete<void>(`${environment.DbKey}/posts/${id}.json`);
     }
 }
