@@ -9,11 +9,12 @@ import { CreatePageComponent } from './create-page/create-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DashboardComponent } from "./dashboard/dashboard.component";
-import { PostPageComponent } from "../post-page/post-page.component";
 import { SharedModule } from "./shared/shared.module";
 import { AuthGuard } from "./shared/components/admin-layout/services/auth.guard";
 import { CreatePageService } from "./shared/components/admin-layout/services/create.page.service";
 import { SearchPipe } from "./shared/components/search.pipe";
+import { AlertComponent } from "./shared/components/alert/alert.component";
+import { AlertService } from "./shared/components/admin-layout/services/alert.service";
 
 
 
@@ -24,7 +25,9 @@ import { SearchPipe } from "./shared/components/search.pipe";
         CreatePageComponent,
         DashboardComponent,
         EditPageComponent,
-        SearchPipe],
+        SearchPipe,
+        AlertComponent
+        ],
 
         imports:[
             ReactiveFormsModule,
@@ -35,7 +38,7 @@ import { SearchPipe } from "./shared/components/search.pipe";
                 {path:'',component:AdminLayoutComponent, children :[
                 {path:'login',component:LoginPageComponent},
                 {path:'dashboard', component:DashboardComponent, canActivate: [AuthGuard]},
-                {path:'post/:id/edit',component: PostPageComponent, canActivate:[AuthGuard]},
+                {path:'post/:id/edit',component: EditPageComponent, canActivate:[AuthGuard]},
                 {path:'create',component:CreatePageComponent,canActivate:[AuthGuard]}
             ]}
         ])
@@ -48,7 +51,8 @@ import { SearchPipe } from "./shared/components/search.pipe";
 
         providers:[
             AuthGuard,
-            CreatePageService]
+            CreatePageService,
+            AlertService]
     })
 
     export class AdminModule{

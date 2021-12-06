@@ -2,7 +2,7 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable, throwError } from "rxjs";
-import { catchError, tap } from "rxjs/operators";
+import { catchError } from "rxjs/operators";
 import { AuthService } from "./components/admin-layout/services/auth.service";
 
 @Injectable()
@@ -26,10 +26,7 @@ intercept(
         }
         return next.handle(req)
         .pipe(
-            tap( () => {
-                console.log('Intercept')
-            }),
-            catchError( (error:HttpErrorResponse) => {
+           catchError( (error:HttpErrorResponse) => {
                 console.log('[Intercepter Error]:',error)
                 if(error.status == 401) {
                     this.auth.logout()

@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Post } from '../interfaces';
+import { AlertService } from '../shared/components/admin-layout/services/alert.service';
 import { CreatePageService } from '../shared/components/admin-layout/services/create.page.service';
 
 
@@ -16,7 +17,9 @@ export class DashboardComponent implements OnInit, OnDestroy{
   pSub: Subscription
   searchStr = ''
   dSub:Subscription
-  constructor(private CreatePostService:CreatePageService) {
+  constructor(
+    private CreatePostService:CreatePageService,
+    private alert:AlertService) {
 
   }
   
@@ -32,6 +35,7 @@ export class DashboardComponent implements OnInit, OnDestroy{
   remove(id:string){
    this.dSub = this.CreatePostService.remove(id).subscribe(()=>{
       this.posts = this.posts.filter( post => post.id !== id)
+      this.alert.warning('Post successesfuly deleted!')
 
     })
   }

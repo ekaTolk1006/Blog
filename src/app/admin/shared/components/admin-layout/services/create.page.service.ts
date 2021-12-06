@@ -58,4 +58,8 @@ export class CreatePageService{
     remove(id: string):Observable<void>{
         return this.http.delete<void>(`${environment.DbKey}/posts/${id}.json`);
     }
+
+    update(post: Post): Observable<Post> {
+        return this.http.patch<Post>(`${environment.DbKey}/posts/${post.id}.json`, post)
+      }
 }

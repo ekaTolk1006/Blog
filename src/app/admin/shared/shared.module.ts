@@ -4,6 +4,7 @@ import { QuillModule } from 'ngx-quill'
 import { AuthIntercepter } from "./auth.intercepter";
 import { CommonModule } from "@angular/common";
 
+
 const INTERCEPTOR_PROVIDER: Provider = { 
     provide: HTTP_INTERCEPTORS,
     multi: true,
@@ -13,6 +14,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
 
 @NgModule({
 
+  
     imports:[
     HttpClientModule,
     QuillModule.forRoot(),
@@ -25,7 +27,8 @@ const INTERCEPTOR_PROVIDER: Provider = {
         QuillModule,
         CommonModule
        ],
-       providers: [INTERCEPTOR_PROVIDER]
+       providers: [INTERCEPTOR_PROVIDER,
+      ]
 })
 
 export class SharedModule{
